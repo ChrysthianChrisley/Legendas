@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Editor de legendas</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="script.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+</head>
+<body>
+	<header>
+		<h1><b><a href="#">Editor de legendas</a></b></h1>
+	</header>
+
+	<main>
+		<section>
+			<label for="selecionarArquivo"><b>Selecione um arquivo .srt:</b></label>
+			<input type="file" id="selecionarArquivo" onchange="carregaLegenda(event)">
+		</section>
+
+		<section>
+			<label for="corSelecionada"><b>Selecione uma cor:</b></label>
+			<input type="color" id="corSelecionada" value="#FFFF00" onchange="selecionaCor()">
+			<input type="text" id="corSelecionadaValor" value="#FFFF00" readonly>
+		</section>
+
+		<section>
+			<label for="tamanhoSelecionado"><b>Selecione um tamanho:</b></label>
+			<input type="range" id="tamanhoSelecionado" min="1" max="50" value="24" onchange="aplicaCor(); selecionaTamanho();">
+			<span id="valorTamanhoSelecionado"><b>24</b></span>
+		</section>
+
+		<section>
+			<button onclick="aplicaCor()"><b>OK</b></button>
+		</section>
+
+		<section>
+			<label for="textoLegenda"><b>Legenda:</b></label>
+			<textarea id="textoLegenda" rows="10" cols="100"></textarea>
+		</section>
+
+		<section>
+			<label for="resultado"><b>Resultado:</b></label>
+			<textarea id="resultado" rows="10" cols="100" readonly></textarea>
+		</section>
+
+		<section>
+			<button onclick="copiarTexto()"><b>Copiar Texto</b></button>
+			<button onclick="salvarArquivo()"><b>Download</b></button>
+		</section>
+	</main>
+
+	<footer>
+		<p><center><b>Desenvolvido por Chrysthian Chrisley - v. 1.0 - 02/04/2023</b></center></p>
+
+		
+	</footer>
+</body>
+</html>
