@@ -19,12 +19,21 @@ function aplicaCor() {
   var cor = document.getElementById("corSelecionadaValor").value;
   var tamanho = document.getElementById("tamanhoSelecionado").value;
   var legenda = document.getElementById("textoLegenda").value;
-  var legendaComCor = legenda.replace(
-    /^(.*\d{2}:\d{2}:\d{2},\d{3})\n(.*)$/gm,
-    '$1\n<font color="' + cor + '" size="' + tamanho + '">$2</font>'
-  );
-  document.getElementById("resultado").value = legendaComCor;
+  var linhas = legenda.split("\n\n");
+  var legendaComCor = "";
+
+  for (var i = 0; i < linhas.length; i++) {
+    var linhaAtual = linhas[i].split("\n");
+    var tempo = linhaAtual[1];
+    var texto = linhaAtual.slice(2).join("\n");
+    
+    legendaComCor += linhaAtual[0] + "\n" + tempo + "\n";
+    legendaComCor += '<font color="' + cor + '" size="' + tamanho + '">' + texto + '</font>\n\n';
+  }
+
+  document.getElementById("resultado").innerHTML = legendaComCor;
 }
+
 
 function copiarTexto() {
   var resultado = document.getElementById("resultado");
